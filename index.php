@@ -8,12 +8,7 @@
 </head>
 <body>
 <?php //Get URL Parameter
-$url = $_GET['url'];
-if ($url!="") {
-	$src= $url;
-} else {
-	$src = 'http://bradfrostweb.com/blog/post/ish';
-}
+	$src = (empty($_GET['url'])) ? 'http://bradfrostweb.com/blog/post/ish' : addslashes(filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL));
 ?>
 <!--iFrame-->
 <div id="vp-wrap"><iframe id="viewport" src="<?php echo $src; ?>"></iframe></div>
