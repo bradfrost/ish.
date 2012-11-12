@@ -96,6 +96,11 @@ input {
   bottom: 0;
   width: 100%; }
 
+#vp-wrap iframe {
+  border: 1px solid #999;
+  border-width: 0 1px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+
 #viewport {
   -webkit-transition: width 0.8s ease-out;
   -moz-transition: width 0.8s ease-out;
