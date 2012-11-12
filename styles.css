@@ -49,8 +49,8 @@ input {
       background: rgba(255, 255, 255, 0.3); }
 
 .size {
-  width: 308px;
-  right: -268px;
+  width: 351px;
+  right: -312px;
   -webkit-transition: right 0.3s ease-out;
   -moz-transition: right 0.3s ease-out;
   -ms-transition: right 0.3s ease-out;

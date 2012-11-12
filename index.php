@@ -20,6 +20,7 @@
 	<li><a href="#" id="size-l">L</a></li>
 	<li><a href="#" id="size-xl">XL</a></li>
 	<li><a href="#" id="size-random">Random</a></li>
+	<li><a href="#" id="size-disco">Disco</a></li>
 	<li>
 		<form method="post" action="#" id="size-enter" >
 			<input id="size-num" type="number" pattern="[0-9]*" step="10" min="100" placeholder="Enter Size" />
