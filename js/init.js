@@ -14,7 +14,7 @@
 		$sizeInput = $('#size-enter'),
 		$vp,
 		$sgPattern,
-		discoId,
+		discoID = false,
 		discoMode;
 	
 	$(w).resize(function(){ //Update dimensions on resize
@@ -89,6 +89,7 @@
 	function killDisco() {
 		discoMode = false;
 		clearInterval(discoID);
+		discoID = false;
 	}
 	
 	/* Returns a random number between min and max */
