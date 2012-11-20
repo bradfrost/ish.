@@ -2,7 +2,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: "HelveticaNeue", "Helvetica", "Arial", sans-serif;
-  background: rgba(0, 0, 0, 0.2); }
+  background: rgba(0, 0, 0, 0.2);
+  overflow:hidden;}
 
 input {
 	background: none;
@@ -67,6 +68,15 @@ input {
 	  padding: 0.5em; }
 
 
+body.focusMode .size, body.focusMode .size.active {
+right: -351px;
+}
+
+
+
+
+
+
 .url-change {
   width: 305px;
   left: -266px;
@@ -86,6 +96,11 @@ input {
   	  padding: 0.6em;
       background: rgba(255, 255, 255, 0.3);
   }
+  
+  
+  body.focusMode .url-change, body.focusMode .url-change.active {
+left: -305px;
+}
 
 /* Viewport */
 #vp-wrap {
