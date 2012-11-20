@@ -4,6 +4,7 @@
 		$sgViewport = $('#viewport'),
 		$urlToggle = $('#url-toggle'),
 		$sizeToggle = $('#size-toggle'),
+		$body = $('body'),
 		$tSize = $('#size'),
 		$sizeS = $('#size-s'),
 		$sizeM = $('#size-m'),
@@ -22,6 +23,34 @@
 		sw = document.body.clientWidth;
 		sh = document.body.clientHeight;
 	});
+	
+  $(w).keydown(function (a) {
+    if($body.hasClass("focusMode")) {
+      switch (a.keyCode) {
+      case 49:
+      $sizeS.click();
+      break; 
+      case 50:
+      $sizeM.click();
+      break; 
+      case 51:
+      $sizeL.click();
+      break; 
+      case 52:
+      $sizeXL.click();
+      break; 
+      case 53:
+      $sizeFull.click();
+      break; 
+      }
+    }
+    // alt+U
+    if(a.keyCode == 85 && a.altKey) {
+      $body.toggleClass("focusMode");
+    }
+  });
+	
+	
 	
 	//View Trigger
 	$urlToggle.on("click", function(e){
@@ -104,53 +133,3 @@
 	}
 
 })(this);
-
-
-
-
-
-$(function() {
-
-// tidy this up and integrate into code above ####################
-
-
-
-$(document).keydown(function (a) {
-if($("body").hasClass("focusMode")) {
-switch (a.keyCode) {
-case 49:
-$("#size-s").click();
-break; 
-case 50:
-$("#size-m").click();
-break; 
-case 51:
-$("#size-l").click();
-break; 
-case 52:
-$("#size-xl").click();
-break; 
-case 53:
-$("#size-full").click();
-break; 
-
-
-}
-}
-// alt+U
-if(a.keyCode == 85 && a.altKey) {
-$("body").toggleClass("focusMode");
-}
-
-
-
-});
-
-
-
-
-
-
-});
-
-
