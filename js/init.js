@@ -9,6 +9,7 @@
 		$sizeM = $('#size-m'),
 		$sizeL = $('#size-l'),
 		$sizeXL = $('#size-xl'),
+		$sizeFull = $('#size-full'),
 		$sizeR = $('#size-random'),
 		$sizeDisco = $('#size-disco'),
 		$sizeInput = $('#size-enter'),
@@ -55,6 +56,11 @@
 		killDisco();
 		sizeiframe(getRandom(1200,1920));
 	});
+	$sizeFull.on("click", function(e){
+		e.preventDefault();
+		killDisco();
+		sizeiframe(sw);
+	});
 	$sizeR.on("click", function(e){
 		e.preventDefault();
 		killDisco();
@@ -98,3 +104,53 @@
 	}
 
 })(this);
+
+
+
+
+
+$(function() {
+
+
+
+
+
+$(document).keydown(function (a) {
+if($("body").hasClass("focusMode")) {
+switch (a.keyCode) {
+case 49:
+$("#size-s").click();
+break; 
+case 50:
+$("#size-m").click();
+break; 
+case 51:
+$("#size-l").click();
+break; 
+case 52:
+$("#size-xl").click();
+break; 
+case 53:
+$("#size-full").click();
+break; 
+
+
+}
+}
+// alt+U
+if(a.keyCode == 85 && a.altKey) {
+$("body").toggleClass("focusMode");
+}
+
+
+
+});
+
+
+
+
+
+
+});
+
+
