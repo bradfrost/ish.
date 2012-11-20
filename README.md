@@ -12,6 +12,9 @@ The real reasons for this tool is to educate and to facilitate a mental shift. M
 <li>Once the site loads find the <strong>Size</strong> button and expand the sizing options</li>
 <li>Choose Small-ish, Medium-ish, Large-ish, Xtra-Large-ish, or any random size (many thanks to <a href="https://twitter.com/jordanmoore">Jordan Moore</a> and his <a href="http://www.jordanm.co.uk/lab/responsiveroulette"> Responsive Roulette</a> for the idea). Or enter any specific value.</li>
 <li>Watch as the site resizes and look for any visual or functional oddities along the way.</li>
+<li>Use Alt+U to toggle in and out of Focus Mode</li>
+<li>Focus Mode will remove the ish. UI and focus on the content (useful if demonstrating a site to clients)</li>
+<li>Once in Focus Mode, use keys 1 - 5 to resize the viewport</li>
 </ol>
 
 ## Who

@@ -19,6 +19,7 @@
 	<li><a href="#" id="size-m">M</a></li>
 	<li><a href="#" id="size-l">L</a></li>
 	<li><a href="#" id="size-xl">XL</a></li>
+	<li><a href="#" id="size-full">100%</a></li>
 	<li><a href="#" id="size-random">Random</a></li>
 	<li><a href="#" id="size-disco">Disco</a></li>
 	<li>

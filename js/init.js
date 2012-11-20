@@ -4,11 +4,13 @@
 		$sgViewport = $('#viewport'),
 		$urlToggle = $('#url-toggle'),
 		$sizeToggle = $('#size-toggle'),
+		$body = $('body'),
 		$tSize = $('#size'),
 		$sizeS = $('#size-s'),
 		$sizeM = $('#size-m'),
 		$sizeL = $('#size-l'),
 		$sizeXL = $('#size-xl'),
+		$sizeFull = $('#size-full'),
 		$sizeR = $('#size-random'),
 		$sizeDisco = $('#size-disco'),
 		$sizeInput = $('#size-enter'),
@@ -21,6 +23,34 @@
 		sw = document.body.clientWidth;
 		sh = document.body.clientHeight;
 	});
+	
+  $(w).keydown(function (a) {
+    if($body.hasClass("focusMode")) {
+      switch (a.keyCode) {
+      case 49:
+      $sizeS.click();
+      break; 
+      case 50:
+      $sizeM.click();
+      break; 
+      case 51:
+      $sizeL.click();
+      break; 
+      case 52:
+      $sizeXL.click();
+      break; 
+      case 53:
+      $sizeFull.click();
+      break; 
+      }
+    }
+    // alt+U
+    if(a.keyCode == 85 && a.altKey) {
+      $body.toggleClass("focusMode");
+    }
+  });
+	
+	
 	
 	//View Trigger
 	$urlToggle.on("click", function(e){
@@ -54,6 +84,11 @@
 		e.preventDefault();
 		killDisco();
 		sizeiframe(getRandom(1200,1920));
+	});
+	$sizeFull.on("click", function(e){
+		e.preventDefault();
+		killDisco();
+		sizeiframe(sw);
 	});
 	$sizeR.on("click", function(e){
 		e.preventDefault();
