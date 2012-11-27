@@ -18,7 +18,9 @@
 		$sgPattern,
 		discoID = false,
 		discoMode;
-	
+
+	$sgViewport.attr('src', getUrlFromLocation());
+
 	$(w).resize(function(){ //Update dimensions on resize
 		sw = document.body.clientWidth;
 		sh = document.body.clientHeight;
@@ -132,4 +134,13 @@
 	    return Math.random() * (max - min) + min;
 	}
 
+	function getUrlFromLocation() {
+		var index = location.search.indexOf('url=');
+		var url = decodeURIComponent(location.search.substring(index + 4));
+		if (url && url !== '') {
+			return url;
+		} else {
+			return 'http://bradfrostweb.com/blog/post/ish';
+		}
+	}
 })(this);

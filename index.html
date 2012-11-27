@@ -7,11 +7,8 @@
     <link rel="stylesheet" href="styles.css" media="all" />
 </head>
 <body>
-<?php //Get URL Parameter
-	$src = (empty($_GET['url'])) ? 'http://bradfrostweb.com/blog/post/ish' : addslashes(filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL));
-?>
 <!--iFrame-->
-<div id="vp-wrap"><iframe id="viewport" src="<?php echo $src; ?>"></iframe></div>
+<div id="vp-wrap"><iframe id="viewport"></iframe></div>
 <!--end iFrame-->
 <ul class="nav size" id="nav">
 	<li><a href="#" id="size-toggle" class="active">Size</a></li>
