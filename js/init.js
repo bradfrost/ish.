@@ -14,6 +14,7 @@
 		$sizeR = $('#size-random'),
 		$sizeDisco = $('#size-disco'),
 		$sizeInput = $('#size-enter'),
+		$urlUpdate = $('#updateIFrame'),
 		$vp,
 		$sgPattern,
 		discoID = false,
@@ -95,6 +96,12 @@
 		killDisco();
 		sizeiframe(getRandom(240,sw));
 	});
+	
+	$urlUpdate.submit(function () {
+	        $sgViewport.attr('src', $('#url').val());
+	        $('#url').val(' ');
+	        return false;
+        });
 	
 	$sizeDisco.on("click", function(e){
 		e.preventDefault();
