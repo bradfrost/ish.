@@ -98,10 +98,10 @@
 	});
 	
 	$urlUpdate.submit(function () {
-        $sgViewport.attr('src', $('#url').val());
-        $('#url').val(' ');
-        return false;
-    });
+	        $sgViewport.attr('src', $('#url').val());
+	        $('#url').val(' ');
+	        return false;
+        });
 	
 	$sizeDisco.on("click", function(e){
 		e.preventDefault();
