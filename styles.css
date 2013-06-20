@@ -67,6 +67,12 @@ input {
 	  float: left;
 	  padding: 0.5em; }
 
+.height {
+	width:50px;
+	right:0px;
+	top:50px;
+}
+	  
 
 body.focusMode .size, body.focusMode .size.active {
 right: -351px;
@@ -122,6 +128,12 @@ left: -305px;
   -ms-transition: width 0.8s ease-out;
   -o-transition: width 0.8s ease-out;
   transition: width 0.8s ease-out;
+
+   -webkit-transition: height 0.8s ease-out;
+  -moz-transition: height 0.8s ease-out;
+  -ms-transition: height 0.8s ease-out;
+  -o-transition: height 0.8s ease-out;
+  transition: height 0.8s ease-out;
   width: 100%;
   border: 0;
   margin: 0 auto;
