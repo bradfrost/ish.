@@ -5,6 +5,7 @@
 		$urlToggle = $('#url-toggle'),
 		$sizeToggle = $('#size-toggle'),
 		$body = $('body'),
+	
 		$tSize = $('#size'),
 		$sizeS = $('#size-s'),
 		$sizeM = $('#size-m'),
@@ -14,6 +15,13 @@
 		$sizeR = $('#size-random'),
 		$sizeDisco = $('#size-disco'),
 		$sizeInput = $('#size-enter'),
+			
+		$heightS = $("#height-s"),
+		$heightM = $("#height-m"),
+		$heightL = $("#height-l"),
+		$heightXL = $("#height-xl"),
+		$heightFull = $("#height-full"),
+
 		$vp,
 		$sgPattern,
 		discoID = false,
@@ -70,26 +78,64 @@
 		killDisco();
 		sizeiframe(getRandom(240,500));
 	});
+
+	$heightS.on("click", function(e){
+		e.preventDefault();
+		killDisco();
+		heightiframe(getRandom(240,500));
+	});
+
 	$sizeM.on("click", function(e){
 		e.preventDefault();
 		killDisco();
 		sizeiframe(getRandom(500,800));
 	});
+
+	$heightM.on("click", function(e){
+		e.preventDefault();
+		killDisco();
+		heightiframe(getRandom(500,800));
+	});
+
+
 	$sizeL.on("click", function(e){
 		e.preventDefault();
 		killDisco();
 		sizeiframe(getRandom(800,1200));
 	});
+
+	$heightL.on("click", function(e){
+		e.preventDefault();
+		killDisco();
+		heightiframe(getRandom(800,1200));
+	});
+
+
 	$sizeXL.on("click", function(e){
 		e.preventDefault();
 		killDisco();
 		sizeiframe(getRandom(1200,1920));
 	});
+
+	$heightXL.on("click", function(e){
+		e.preventDefault();
+		killDisco();
+		heightiframe(getRandom(1200,1920));
+	});
+
 	$sizeFull.on("click", function(e){
 		e.preventDefault();
 		killDisco();
 		sizeiframe(sw);
 	});
+
+	$heightFull.on("click", function(e){
+		e.preventDefault();
+		killDisco();
+		heightiframe(sh);
+	});
+
+
 	$sizeR.on("click", function(e){
 		e.preventDefault();
 		killDisco();
@@ -120,7 +166,11 @@
 	function sizeiframe(size) {
 		$('#viewport').width(size);
 	}
-	
+
+	function heightiframe(size) {
+		$('#viewport').height(size);
+	}
+
 	function killDisco() {
 		discoMode = false;
 		clearInterval(discoID);

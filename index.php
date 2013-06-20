@@ -28,6 +28,14 @@
 		</form>
 	</li>
 </ul>
+<ul class="nav height" id="nav-height">
+	<li><a href="#" id="height-toggle" class="active">Height</a></li>
+	<li><a href="#" id="height-s">S</a></li>
+	<li><a href="#" id="height-m">M</a></li>
+	<li><a href="#" id="height-l">L</a></li>
+	<li><a href="#" id="height-xl">XL</a></li>
+	<li><a href="#" id="height-full">100%</a></li>
+</ul>
 
 <div class="nav url-change">
 	<form method="get" action="">
