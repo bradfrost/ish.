@@ -1,6 +1,8 @@
 <?php
 
+// Include the javascript code from ishlet.js
 $js = file_get_contents("ishlet.js");
+// encodes the js string so it doesn't interfere with the landing page
 $js_html = htmlentities($js);
 
 ?>
