@@ -9,7 +9,7 @@ $js_html = htmlentities($js);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>'+d.title+'-ish.</title>
+	<title>ishlet. A bookmarklet version of Brad Frosts's viewport resizer.</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width" />
 	<style type="text/css">
@@ -45,7 +45,7 @@ $js_html = htmlentities($js);
 </head>
 <body>
 	<h1>ishlet.</h1>
-	<h2>A bookmarklet version of the viewport resizer by Brad Frost</h2>
+	<h2>A bookmarklet version of Brad Frosts's viewport resizer.</h2>
 
 	<div class="container">
 		<a class='btn' href="<?php echo($js_html); ?>">ishlet.</a>
