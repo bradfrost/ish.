@@ -1,130 +1,126 @@
 (function(w){
-	var sw = document.body.clientWidth,
-		sh = document.body.clientHeight,
-		$sgViewport = $('#viewport'),
-		$urlToggle = $('#url-toggle'),
-		$sizeToggle = $('#size-toggle'),
-		$body = $('body'),
-		$tSize = $('#size'),
-		$sizeS = $('#size-s'),
-		$sizeM = $('#size-m'),
-		$sizeL = $('#size-l'),
-		$sizeXL = $('#size-xl'),
-		$sizeFull = $('#size-full'),
-		$sizeR = $('#size-random'),
-		$sizeDisco = $('#size-disco'),
-		$sizeInput = $('#size-enter'),
-		$vp,
-		$sgPattern,
-		discoID = false,
-		discoMode;
+	var doc = document,
+	docBody = doc.body,
+	WIDTH = docBody.clientWidth,
+	SMALL = 240,
+	MEDIUM = 500,
+	LARGE = 800,
+	XLARGE = 1200,
+	FULL = 1900,
+	$urlToggle = $('#url-toggle'),
+	$sizeToggle = $('#size-toggle'),
+	$body = $('body'),
+	$sizeS = $('#size-s'),
+	$sizeM = $('#size-m'),
+	$sizeL = $('#size-l'),
+	$sizeXL = $('#size-xl'),
+	$sizeFull = $('#size-full'),
+	$sizeR = $('#size-random'),
+	$sizeDisco = $('#size-disco'),
+	$sizeInput = $('#size-enter'),
+	discoID = false,
+	discoMode;
 	
 	$(w).resize(function(){ //Update dimensions on resize
-		sw = document.body.clientWidth;
-		sh = document.body.clientHeight;
+		WIDTH = docBody.clientWidth;
 	});
 	
-  $(w).keydown(function (a) {
-    if($body.hasClass("focusMode")) {
-      switch (a.keyCode) {
-      case 49:
-      $sizeS.click();
-      break; 
-      case 50:
-      $sizeM.click();
-      break; 
-      case 51:
-      $sizeL.click();
-      break; 
-      case 52:
-      $sizeXL.click();
-      break; 
-      case 53:
-      $sizeFull.click();
-      break; 
-      }
-    }
-    // alt+U
-    if(a.keyCode == 85 && a.altKey) {
-      $body.toggleClass("focusMode");
-    }
-  });
-	
-	
-	
+	$(w).keydown(function (a) {
+	    if ($body.hasClass("focusMode")) {
+	      switch (a.keyCode) {
+	      case 49:
+		      $sizeS.click();
+		      break; 
+	      case 50:
+		      $sizeM.click();
+		      break; 
+	      case 51:
+		      $sizeL.click();
+		      break; 
+	      case 52:
+		      $sizeXL.click();
+		      break; 
+	      case 53:
+		      $sizeFull.click();
+		      break; 
+	      }
+	    }
+	    // alt+U
+	    if (a.keyCode == 85 && a.altKey) {
+	      $body.toggleClass("focusMode");
+	    }
+	});
+		
 	//View Trigger
-	$urlToggle.on("click", function(e){
-		e.preventDefault();
-		$(this).parents('.nav').toggleClass('active');
+	$urlToggle.on("click", function(event){
+		toggleActive(event, this, '.nav');
 	});
 
 	//Size Trigger
-	$sizeToggle.on("click", function(e){
-		e.preventDefault();
-		$(this).parents('ul').toggleClass('active');
+	$sizeToggle.on("click", function(event){
+		toggleActive(event, this, 'ul');
 	});
 	
 	//Size View Events
-	$sizeS.on("click", function(e){
-		e.preventDefault();
-		killDisco();
-		sizeiframe(getRandom(240,500));
+	$sizeS.on("click", function(event) {
+		resizePage(event, SMALL, MEDIUM);
 	});
-	$sizeM.on("click", function(e){
-		e.preventDefault();
-		killDisco();
-		sizeiframe(getRandom(500,800));
+	$sizeM.on("click", function(event) {
+		resizePage(event, MEDIUM, LARGE);
 	});
-	$sizeL.on("click", function(e){
-		e.preventDefault();
-		killDisco();
-		sizeiframe(getRandom(800,1200));
+	$sizeL.on("click", function(event){
+		resizePage(event, LARGE, XLARGE);
 	});
-	$sizeXL.on("click", function(e){
-		e.preventDefault();
-		killDisco();
-		sizeiframe(getRandom(1200,1920));
+	$sizeXL.on("click", function(event){
+		resizePage(event, XLARGE, FULL);
 	});
-	$sizeFull.on("click", function(e){
-		e.preventDefault();
-		killDisco();
-		sizeiframe(sw);
+	$sizeFull.on("click", function(event){
+		resizePage(event, WIDTH);
 	});
-	$sizeR.on("click", function(e){
-		e.preventDefault();
-		killDisco();
-		sizeiframe(getRandom(240,sw));
+	$sizeR.on("click", function(event){
+		resizePage(event, SMALL, WIDTH);
 	});
-	
 	$sizeDisco.on("click", function(e){
 		e.preventDefault();
 		if (discoMode) {
-			killDisco();
+			stopDisco();
 		} else {
 			discoMode = true;
-			discoID = setInterval(disco, 800);
+			discoID = setInterval(disco, MEDIUM);
 		}
-		
 	});
 	
 	$sizeInput.submit(function(){
-		var val = $('#size-num').val();
-		sizeiframe(val);
+		setViewportWidth(doc.getElementById('size-num').value);
 		return false;
 	});
+	
+	//Private functions
+	function resizePage(event, minWidth, maxWidth) {
+		event.preventDefault();
+		stopDisco();
+		setViewportWidth(maxWidth === undefined ?
+			minWidth :
+			getRandom(minWidth, maxWidth));
+	}
+	
+	function setViewportWidth(size) {
+		doc.getElementById('viewport').style.width = size + 'px';
+	}
 
-	function disco() {
-		sizeiframe(getRandom(240,sw));
+	function startDisco() {
+		setViewportWidth(getRandom(SMALL, WIDTH));
 	}
 	
-	function sizeiframe(size) {
-		$('#viewport').width(size);
-	}
-	
-	function killDisco() {
+	function stopDisco() {
 		discoMode = false;
 		clearInterval(discoID);
 		discoID = false;
+	}
+	
+	function toggleActive(event, root, container {
+		event.preventDefault();
+		return $(root).parents(container).toggleClass('active');
 	}
 	
 	/* Returns a random number between min and max */
