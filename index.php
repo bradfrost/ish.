@@ -24,7 +24,7 @@
 $protocol = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
 $bookmarkletURL = $protocol."://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
 ?>
-		<a href="javascript:location.href='<?php echo $bookmarkletURL; ?>?title='+document.title+'&url='+window.location.href">ish</a>
+		<a title="The ish bookmarklet" href="javascript:location.href='<?php echo $bookmarkletURL; ?>?title='+document.title+'&url='+window.location.href">ish</a>
 
 		<!--End Pattern Navigation-->
 		
