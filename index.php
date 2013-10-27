@@ -21,8 +21,8 @@
 		<!--Begin Pattern Navigation-->
 <?php 
 //Get the correct URL for this domain. Is there really no easier way to do this?
-$protocol = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
-$bookmarkletURL = $protocol."://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
+$bookmarkletURL = "http://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
+// Change http to https if you host this on a secure server.
 ?>
 		<a title="The ish bookmarklet" href="javascript:location.href='<?php echo $bookmarkletURL; ?>?title='+document.title+'&url='+window.location.href">ish</a>
 
