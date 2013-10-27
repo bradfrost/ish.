@@ -15,6 +15,7 @@ The real reasons for this tool is to educate and to facilitate a mental shift. M
 <li>Use Alt+U to toggle in and out of Focus Mode</li>
 <li>Focus Mode will remove the ish. UI and focus on the content (useful if demonstrating a site to clients)</li>
 <li>Once in Focus Mode, use keys 1 - 5 to resize the viewport</li>
+<li>You can drag this <a href="javascript:location.href='http://yourdomain.com/index.php?title='+document.title+'&url='+window.location.href">ish</a>-bookmarklet to you bookmarks (and change *yourdomain.com* to your own domain).</li>
 </ol>
 
 ## Who
