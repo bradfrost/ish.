@@ -40,7 +40,7 @@ input {
   .nav li:first-child {
   	border-left: 0; }
   .nav a {
-    color: #808080;
+    color: white;
     text-decoration: none;
     display: block;
     line-height: 1;
