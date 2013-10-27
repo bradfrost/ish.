@@ -33,10 +33,12 @@
 </ul>
 
 <div class="nav url-change">
-	<form method="get" action="">
-		<label for="url" id="url-toggle" class="url-toggle">URL</label>
-	     <input id="url" type="url" name="url" placeholder="Enter any URL" />
-	  </form>
+	<?php 
+//Get the correct URL for this domain. Is there really no easier way to do this?
+$protocol = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
+$bookmarkletURL = $protocol."://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
+?>
+	<a href="javascript:location.href='<?php echo $bookmarkletURL; ?>?title='+document.title+'&url='+window.location.href" title="The ish bookmarklet">ish</a>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 <script type="text/javascript" src="js/init.js "></script>
