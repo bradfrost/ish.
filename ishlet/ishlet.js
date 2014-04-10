@@ -6,7 +6,7 @@ javascript:void((function()%7Bvar d=document;d.write('
 '+d.title+'-ish.</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="http://demo.patternlab.io/styleguide/css/styleguide.css" media="all" />
+    <link rel="stylesheet" href="http://bradfrostweb.com/demo/ish/styles.css" />
 </head>
 <body>
 <header class="sg-header" role="banner" style="height:33px">
