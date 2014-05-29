@@ -15,10 +15,22 @@
 		hash = window.location.hash.replace(/^.*?#/,'');
 	
 	
+	$('#url-form').submit(function(e) {
+		var urlVal = $('#url').val();
+		var regex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+
+		if(regex.test(urlVal)) {
+			return;
+		} else {
+			var newURL = "http://"+urlVal;
+			$('#url').val(newURL);
+			return;
+		}
+		
+	});
+	
 	$(w).resize(function(){ //Update dimensions on resize
-		sw = document.body.clientWidth;
-		
-		
+		sw = document.body.clientWidth;	
 		
 		if(fullMode == true) {
 			sizeiframe(sw, false);

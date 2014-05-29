@@ -12,9 +12,9 @@
 ?>
 <header class="sg-header" role="banner">
 	<div class="nav url-change">
-		<form method="get" action="">
+		<form method="get" action="" id="url-form">
 			<label for="url" id="url-toggle" class="url-toggle">URL</label>
-		     <input id="url" type="url" name="url" placeholder="Enter any URL" />
+		     <input id="url" type="text" name="url" placeholder="Enter any URL" value="<?php echo $src; ?>" />
 		     <button id="url-submit">Go</button>
 		  </form>
 	</div>
@@ -47,7 +47,7 @@
 <div id="sg-vp-wrap">
 	<div id="sg-cover"></div>
 	<div id="sg-gen-container">
-		<iframe id="sg-viewport" src="<?php echo $src; ?>"></iframe>
+		<iframe id="sg-viewport" src="<?php echo $src; ?>" sandbox="allow-same-origin allow-scripts"></iframe>
 		<div id="sg-rightpull-container">
 			<div id="sg-rightpull"></div>
 		</div>
