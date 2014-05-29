@@ -17,6 +17,12 @@
 	
 	$(w).resize(function(){ //Update dimensions on resize
 		sw = document.body.clientWidth;
+		
+		
+		
+		if(fullMode == true) {
+			sizeiframe(sw, false);
+		}
 	});
 
 	/* Nav Active State */
@@ -51,6 +57,7 @@
 		e.preventDefault();
 		killDisco();
 		killHay();
+		fullMode = false;
 		changeActiveState($(this));
 		sizeiframe(getRandom(minViewportWidth,500));
 	});
@@ -60,6 +67,7 @@
 		e.preventDefault();
 		killDisco();
 		killHay();
+		fullMode = false;
 		changeActiveState($(this));
 		sizeiframe(getRandom(500,800));
 	});
@@ -69,6 +77,7 @@
 		e.preventDefault();
 		killDisco();
 		killHay();
+		fullMode = false;
 		changeActiveState($(this));
 		sizeiframe(getRandom(800,1200));
 	});
@@ -79,12 +88,15 @@
 		killDisco();
 		killHay();
 		changeActiveState($(this));
+		fullMode = true;
+		console.log('full mode!');
 		sizeiframe(sw);
 	});
 	
 	//Click Random Size Button
 	$('#sg-size-random').on("click", function(e){
 		e.preventDefault();
+		fullMode = false;
 		sizeRandom();
 		window.location.hash = 'random';
 	});
@@ -92,6 +104,7 @@
 	function sizeRandom() {
 		killDisco();
 		killHay();
+		fullMode = false;
 		changeActiveState($('#sg-size-random'));
 		sizeiframe(getRandom(minViewportWidth,sw));
 	}
@@ -100,6 +113,7 @@
 	$('#sg-size-disco').on("click", function(e){
 		e.preventDefault();
 		killHay();
+		fullMode = false;
 
 		if (discoMode) {
 			killDisco();
@@ -308,6 +322,8 @@
 		// capture default data
 		var origClientX = event.clientX;
 		var origViewportWidth = $sgViewport.width();
+		
+		fullMode = false;
 		
 		// show the cover
 		$("#sg-cover").css("display","block");
