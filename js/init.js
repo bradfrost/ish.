@@ -33,7 +33,7 @@
 		sw = document.body.clientWidth;	
 		
 		if(fullMode == true) {
-			
+			sizeFull();
 		}
 	});
 
