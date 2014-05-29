@@ -58,8 +58,9 @@
 		killDisco();
 		killHay();
 		fullMode = false;
+		window.location.hash = 's';
 		changeActiveState($(this));
-		sizeiframe(getRandom(minViewportWidth,500));
+		sizeSmall();
 	});
 	
 	//Click Size Medium Button
@@ -68,8 +69,9 @@
 		killDisco();
 		killHay();
 		fullMode = false;
+		window.location.hash = 'm';
 		changeActiveState($(this));
-		sizeiframe(getRandom(500,800));
+		sizeMedium();
 	});
 	
 	//Click Size Large Button
@@ -78,8 +80,9 @@
 		killDisco();
 		killHay();
 		fullMode = false;
+		window.location.hash = 'l';
 		changeActiveState($(this));
-		sizeiframe(getRandom(800,1200));
+		sizeLarge();
 	});
 
 	//Click Full Width Button
@@ -89,7 +92,7 @@
 		killHay();
 		changeActiveState($(this));
 		fullMode = true;
-		console.log('full mode!');
+		window.location.hash = '';
 		sizeiframe(sw);
 	});
 	
@@ -101,6 +104,22 @@
 		window.location.hash = 'random';
 	});
 
+	//Size Small
+	function sizeSmall() {
+		sizeiframe(getRandom(minViewportWidth,500));
+	}
+	
+	//Size Medium
+	function sizeMedium() {
+		sizeiframe(getRandom(500,800));
+	}
+	
+	//Size Large
+	function sizeLarge() {
+		sizeiframe(getRandom(800,1200));
+	}
+
+	//Size Random Size
 	function sizeRandom() {
 		killDisco();
 		killHay();
@@ -189,12 +208,15 @@
 		if(e.keyCode === 38) { //If the up arrow key is hit
 			val++;
 			sizeiframe(val,false);
+			window.location.hash = val;
 		} else if(e.keyCode === 40) { //If the down arrow key is hit
 			val--;
 			sizeiframe(val,false);
+			window.location.hash = val;
 		} else if(e.keyCode === 13) { //If the Enter key is hit
 			e.preventDefault();
 			sizeiframe(val); //Size Iframe to value of text box
+			window.location.hash = val;
 			$(this).blur();
 		}
 		changeActiveState();
@@ -220,6 +242,8 @@
 			sizeiframe(Math.floor(val*$bodySize)); //Size Iframe to value of text box
 		}
 		changeActiveState();
+		
+		window.location.hash = parseInt(val*$bodySize);
 	});
 
 	$sizeEms.on('keyup', function(){
@@ -243,8 +267,6 @@
 	function sizeiframe(size,animate) {
 		var theSize;
 
-
-
 		if(size>maxViewportWidth) { //If the entered size is larger than the max allowed viewport size, cap value at max vp size
 			theSize = maxViewportWidth;
 		} else if(size<minViewportWidth) { //If the entered size is less than the minimum allowed viewport size, cap value at min vp size
@@ -266,16 +288,9 @@
 		$sgViewport.width(theSize); //Resize viewport to desired size
 
 		updateSizeReading(theSize); //Update values in toolbar
-		saveSize(theSize); //Save current viewport to cookie
 	}
 	
-	function saveSize(size) {
-		if (!DataSaver.findValue('vpWidth')) {
-			DataSaver.addValue("vpWidth",size);
-		} else {
-			DataSaver.updateValue("vpWidth",size);
-		}
-	}
+
 	
 	
 	//Update Pixel and Em inputs
@@ -298,12 +313,14 @@
 		} else {
 			$sizeEms.val(emSize.toFixed(2));
 			$sizePx.val(pxSize);
-		}	
+		}
 	}
 	
 	/* Returns a random number between min and max */
 	function getRandom (min, max) {
-	    return Math.random() * (max - min) + min;
+	    var num = Math.random() * (max - min) + min;
+	    
+	    return parseInt(num);
 	}
 	
 	function updateViewportWidth(size) {
@@ -335,12 +352,8 @@
 			
 			if (viewportWidth > minViewportWidth) {
 				
-				if (!DataSaver.findValue('vpWidth')) {
-					DataSaver.addValue("vpWidth",viewportWidth);
-				} else {
-					DataSaver.updateValue("vpWidth",viewportWidth);
-				}
 				
+				window.location.hash = viewportWidth;
 				sizeiframe(viewportWidth,false);
 			}
 		});
@@ -358,24 +371,7 @@
 	$sgViewport.width(origViewportWidth - 14);
 	updateSizeReading($sgViewport.width());
 
-	// get the request vars
-	var oGetVars = urlHandler.getRequestVars();
-	
-	// pre-load the viewport width
-	var vpWidth = 0;
-	var trackViewportWidth = true; // can toggle this feature on & off
-	if ((oGetVars.h != undefined) || (oGetVars.hay != undefined)) {
-		startHay();
-	} else if ((oGetVars.d != undefined) || (oGetVars.disco != undefined)) {
-		startDisco();
-	} else if ((oGetVars.w != undefined) || (oGetVars.width != undefined)) {
-		vpWidth = (oGetVars.w != undefined) ? oGetVars.w : oGetVars.width;
-		vpWidth = (vpWidth.indexOf("em") !== -1) ? Math.floor(Math.floor(vpWidth.replace("em",""))*$bodySize) : Math.floor(vpWidth.replace("px",""));
-		DataSaver.updateValue("vpWidth",vpWidth);
-		updateViewportWidth(vpWidth);
-	} else if (trackViewportWidth && (vpWidth = DataSaver.findValue("vpWidth"))) {
-		updateViewportWidth(vpWidth);
-	}
+
 
 	//Read Hash In URL
 	if(hash === 'hay') { 
@@ -384,6 +380,15 @@
 		startDisco(); //Start disco mode if hash says 'disco'
 	} else if(hash === 'random') {
 		sizeRandom(); ///Random screen size if hash says 'random'
+	} else if(hash === 'l') {
+		sizeLarge();
+	} else if(hash === 'm') {
+		sizeMedium();
+	} else if(hash === 's') {
+		sizeSmall();
+	} else if(!isNaN(hash)) { //if screen size is a number
+		sizeiframe(parseInt(hash));
+		console.log('is number');
 	}
 
 })(this);
