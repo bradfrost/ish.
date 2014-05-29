@@ -60,7 +60,7 @@ body {
   height: 33px;
   padding: 0 0.5em;
   border: 0;
-  background: rgba(255, 255, 255, 0.05);
+  background: #444;
   color: #fff;
   -webkit-transition: background 0.15s ease-out;
     -moz-transition: background 0.15s ease-out;
@@ -70,12 +70,12 @@ body {
 }
 
 #url:hover {
-  background: #333;
+  background: #454545;
 }
 
 #url:focus {
   outline: 0;
-  background: #444;
+  background: #555;
   color: #fff;
 }
 
@@ -168,6 +168,7 @@ body {
 @media all and (min-width: 44em) {
   .sg-control > li {
     float: left;
+    width: 31em;
     border-bottom: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.05); } }
 

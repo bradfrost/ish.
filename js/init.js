@@ -1,14 +1,15 @@
 (function(w){
 	var sw = document.body.clientWidth, //Viewport Width
-		sh = document.body.clientHeight, //Viewport Height
 		minViewportWidth = 240, //Minimum Size for Viewport
 		maxViewportWidth = 2600, //Maxiumum Size for Viewport
 		viewportResizeHandleWidth = 14, //Width of the viewport drag-to-resize handle
+		$sgWrapper = $('#sg-gen-container'), //Wrapper around viewport
 		$sgViewport = $('#sg-viewport'), //Viewport element
 		$sizePx = $('.sg-size-px'), //Px size input element in toolbar
 		$sizeEms = $('.sg-size-em'), //Em size input element in toolbar
 		$bodySize = 16, //Body size of the document
 		discoID = false,
+		fullMode = true,
 		discoMode = false,
 		hayMode = false,
 		hash = window.location.hash.replace(/^.*?#/,'');
@@ -16,7 +17,6 @@
 	
 	$(w).resize(function(){ //Update dimensions on resize
 		sw = document.body.clientWidth;
-		sh = document.body.clientHeight;
 	});
 
 	/* Nav Active State */
@@ -150,18 +150,18 @@
 		var currentWidth = $sgViewport.width();
 		hayMode = false;
 		$sgViewport.removeClass('hay-mode');
-		$('#sg-gen-container').removeClass('hay-mode');
+		$sgWrapper.removeClass('hay-mode');
 		sizeiframe(Math.floor(currentWidth));
 	}
 	
 	// start Hay! mode
 	function startHay() {
 		hayMode = true;
-		$('#sg-gen-container').removeClass("vp-animate").width(minViewportWidth+viewportResizeHandleWidth);
+		$sgWrapper.removeClass("vp-animate").width(minViewportWidth+viewportResizeHandleWidth);
 		$sgViewport.removeClass("vp-animate").width(minViewportWidth);
 		
 		window.setTimeout(function(){
-			$('#sg-gen-container').addClass('hay-mode').width(maxViewportWidth+viewportResizeHandleWidth);
+			$sgWrapper.addClass('hay-mode').width(maxViewportWidth+viewportResizeHandleWidth);
 			$sgViewport.addClass('hay-mode').width(maxViewportWidth);
 			
 			setInterval(function(){ var vpSize = $sgViewport.width(); updateSizeReading(vpSize); },100);
@@ -241,12 +241,14 @@
 
 		//Conditionally remove CSS animation class from viewport
 		if(animate===false) {
-			$('#sg-gen-container,#sg-viewport').removeClass("vp-animate"); //If aninate is set to false, remove animate class from viewport
+			$sgWrapper.removeClass("vp-animate");
+			$sgViewport.removeClass("vp-animate"); //If aninate is set to false, remove animate class from viewport
 		} else {
-			$('#sg-gen-container,#sg-viewport').addClass("vp-animate");
+			$sgWrapper.addClass("vp-animate");
+			$sgViewport.addClass("vp-animate");
 		}
 
-		$('#sg-gen-container').width(theSize+viewportResizeHandleWidth); //Resize viewport wrapper to desired size + size of drag resize handler
+		$sgWrapper.width(theSize+viewportResizeHandleWidth); //Resize viewport wrapper to desired size + size of drag resize handler
 		$sgViewport.width(theSize); //Resize viewport to desired size
 
 		updateSizeReading(theSize); //Update values in toolbar
@@ -291,9 +293,8 @@
 	}
 	
 	function updateViewportWidth(size) {
-	
-		$("#sg-viewport").width(size);
-		$("#sg-gen-container").width(size*1 + 14);
+		$sgViewport.width(size);
+		$sgWrapper.width(size*1 + 14);
 		
 		updateSizeReading(size);
 	}
@@ -336,10 +337,10 @@
 	});
 
 	// capture the viewport width that was loaded and modify it so it fits with the pull bar
-	var origViewportWidth = $("#sg-viewport").width();
-	$("#sg-gen-container").width(origViewportWidth);
-	$("#sg-viewport").width(origViewportWidth - 14);
-	updateSizeReading($("#sg-viewport").width());
+	var origViewportWidth = $sgViewport.width();
+	$sgWrapper.width(origViewportWidth);
+	$sgViewport.width(origViewportWidth - 14);
+	updateSizeReading($sgViewport.width());
 
 	// get the request vars
 	var oGetVars = urlHandler.getRequestVars();
