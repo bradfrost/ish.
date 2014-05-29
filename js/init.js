@@ -14,7 +14,7 @@
 		hayMode = false,
 		hash = window.location.hash.replace(/^.*?#/,'');
 	
-	
+	//URL Form Submission
 	$('#url-form').submit(function(e) {
 		var urlVal = $('#url').val();
 		var regex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
@@ -33,7 +33,7 @@
 		sw = document.body.clientWidth;	
 		
 		if(fullMode == true) {
-			sizeiframe(sw, false);
+			
 		}
 	});
 
@@ -138,6 +138,12 @@
 		fullMode = false;
 		changeActiveState($('#sg-size-random'));
 		sizeiframe(getRandom(minViewportWidth,sw));
+	}
+	
+	//Size Full
+	function sizeFull() {
+		sizeiframe(sw, false);
+		updateSizeReading(sw);
 	}
 	
 	//Click for Disco Mode, which resizes the viewport randomly
@@ -398,9 +404,12 @@
 		sizeMedium();
 	} else if(hash === 's') {
 		sizeSmall();
-	} else if(!isNaN(hash)) { //if screen size is a number
+	} else if(!isNaN(hash) && hash !== '') { //if screen size is a number
 		sizeiframe(parseInt(hash));
-		console.log('is number');
+		console.log('this is a number');
+	} else {
+		sizeFull();
+		console.log('this is not a number');
 	}
 
 })(this);

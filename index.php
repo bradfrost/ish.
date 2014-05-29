@@ -57,7 +57,6 @@
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="js/data-saver.js "></script>
 <script type="text/javascript" src="js/url-handler.js "></script>
 <script type="text/javascript" src="js/init.js "></script>
 <script type="text/javascript">
