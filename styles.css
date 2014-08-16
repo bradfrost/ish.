@@ -52,8 +52,8 @@ body {
     text-transform: none; }
 
 /* URL Form */
-#url-toggle { 
-  display: none; 
+#url-toggle {
+  display: none;
 }
 
 #url {
@@ -282,7 +282,8 @@ body {
   border: 0;
   x-margin: 0 auto;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  float: left; }
   #sg-viewport.hay-mode {
     -webkit-transition: all 40s linear;
     -moz-transition: all 40s linear;
@@ -340,7 +341,7 @@ body {
   transition: width 0.8s ease-out; }
 
 /*------------------------------------*\
-    $STYLE GUIDE CONTENT 
+    $STYLE GUIDE CONTENT
 \*------------------------------------*/
 /* Section Pattern */
 .sg-pattern {
