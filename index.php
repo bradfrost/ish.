@@ -47,7 +47,7 @@
 <div id="sg-vp-wrap">
 	<div id="sg-cover"></div>
 	<div id="sg-gen-container">
-		<iframe id="sg-viewport" src="<?php echo $src; ?>" sandbox="allow-same-origin allow-scripts"></iframe>
+		<iframe id="sg-viewport" src="<?php echo $src; ?>" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
 		<div id="sg-rightpull-container">
 			<div id="sg-rightpull"></div>
 		</div>
