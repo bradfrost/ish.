@@ -56,7 +56,7 @@
 <!--end iFrame-->
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/url-handler.js "></script>
 <script type="text/javascript" src="js/init.js "></script>
 <script type="text/javascript">
